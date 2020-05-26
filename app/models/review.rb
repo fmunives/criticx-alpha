@@ -1,4 +1,8 @@
 class Review < ApplicationRecord
+
+  validates :title, :body, presence: true
+  validates :title, uniqueness: true, length: {maximum: 40}
+
   belongs_to :user
   belongs_to :reviewable, polymorphic: true
   after_create :increase_review_count
@@ -20,4 +24,6 @@ class Review < ApplicationRecord
         self.user.update(review_count: value_review_count - 1 )
      end
     end
+
+
 end
