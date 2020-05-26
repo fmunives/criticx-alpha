@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_210609) do
+ActiveRecord::Schema.define(version: 2020_05_26_000734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2020_05_25_210609) do
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "game_genres", force: :cascade do |t|
+    t.bigint "games_id", null: false
+    t.bigint "genres_id", null: false
+    t.index ["games_id"], name: "index_game_genres_on_games_id"
+    t.index ["genres_id"], name: "index_game_genres_on_genres_id"
   end
 
   create_table "game_platforms", force: :cascade do |t|
@@ -73,6 +80,9 @@ ActiveRecord::Schema.define(version: 2020_05_25_210609) do
     t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "reviewable_type", null: false
+    t.bigint "reviewable_id", null: false
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable_type_and_reviewable_id"
     t.index ["users_id"], name: "index_reviews_on_users_id"
   end
 
@@ -85,6 +95,8 @@ ActiveRecord::Schema.define(version: 2020_05_25_210609) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "game_genres", "games", column: "games_id"
+  add_foreign_key "game_genres", "genres", column: "genres_id"
   add_foreign_key "game_platforms", "games", column: "games_id"
   add_foreign_key "game_platforms", "platforms", column: "platforms_id"
   add_foreign_key "involved_companies", "companies", column: "companies_id"
