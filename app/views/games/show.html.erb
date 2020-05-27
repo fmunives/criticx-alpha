@@ -21,3 +21,4 @@
 </ul>
 
 <p> <%= link_to "back", :back %> </p>
+<%= link_to "delete this game", game_path(@game), method: :delete, data: {confirm: "really delete this game?" } %>
