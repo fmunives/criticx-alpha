@@ -7,7 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Country</th>
-      <th>Option</th>
+      <th>Show</th>
+      <th>Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
       <td><%= company.name %></td>
       <td><%= company.country %></td>
       <td><%= link_to "Show", company %></td>
+      <td><%= link_to "Edit", edit_company_path(company) %></td>
     </tr>
     <% end %>
   </tbody>
