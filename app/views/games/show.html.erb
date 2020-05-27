@@ -1,0 +1,24 @@
+<h1> <%= @game.name %> </h1>
+<p><%= @game.summary %>  </p>
+
+<ul>
+    <li>Rating: <%= @game.rating %> </li>
+    <li>Release date: <%= @game.release_date %> </li>
+    <li>Platforms:
+        <ul>
+            <% @game.platforms.each do |platform| %>
+            <li> <%= platform.name %>  </li>
+            <% end %>
+        </ul>
+    </li>
+    <li>Genres:
+        <ul>
+            <%@game.genres.each do |genre| %>
+            <li><%=  genre.name %>  </li>
+            <% end %>
+        </ul>
+    </li>
+</ul>
+
+<p> <%= link_to "back", :back %> </p>
+<%= link_to "delete this game", game_path(@game), method: :delete, data: {confirm: "really delete this game?" } %>

@@ -1,0 +1,7 @@
+<h1><%= @company.name %> </h1>
+<p><%= @company.description %> </p>
+<p><%= @company.start_date %> </p>
+<p><%= @company.country %> </p>
+<p><%= link_to "Back", :back  %> </p>
+
+<%= link_to "delete this game", company_path(@company), method: :delete, data: {confirm: "really delete this company?" } %>
