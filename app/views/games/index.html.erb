@@ -1,0 +1,26 @@
+<h1>All the games</h1>
+
+<%= link_to "New game", new_game_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Show</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+    <tr>
+      <td><%= game.id%></td>
+      <td><%= game.name%></td>
+      <td><%= game.rating%></td>
+      <td><%= link_to "Show", game %></td>
+      <td><%= link_to "Edit", edit_game_path(game) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
