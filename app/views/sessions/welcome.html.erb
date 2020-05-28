@@ -1,0 +1,8 @@
+<h1>Welcome to criticxs</h1>
+<% if logged_in?  %>
+  <h1> You are logged in, <%= current_user.username %>  </h1>
+  <%= button_to "Log_out", session_path, method: :delete %>
+<% else %>
+  <%= button_to "Login", '/login', method: :get %>
+  <%= button_to "Sign up", '/users/new', method: :get %>
+<% end %>
